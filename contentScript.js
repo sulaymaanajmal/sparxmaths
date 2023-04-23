@@ -31,7 +31,9 @@ fetch('https://raw.githubusercontent.com/SintcoLTD/CDN/main/chrome-extension/spa
 
     } else {
       console.log('Chrome extension is not enabled, script will not continue.');
+      throw new Error('Chrome extension is not enabled');
     }
   })
   .catch(error => console.log(error));
 // END FILE CHECK FOR EXTENSION ENABLEMENT
+
