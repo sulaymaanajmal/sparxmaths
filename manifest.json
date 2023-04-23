@@ -30,7 +30,7 @@
 
     "content_scripts": [
       {
-        "matches": ["*://www.sparxmaths.uk/*", "https://auth.sparxmaths.uk/*","https://woolmerhill.sparxmaths.uk/student*"],
+        "matches": ["*://www.sparxmaths.uk/*", "https://auth.sparxmaths.uk/*","https://woolmerhill.sparxmaths.uk/student/*"],
         "js": ["contentScript.js"]
       }
     ],
