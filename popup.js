@@ -1,40 +1,3 @@
-document.querySelector('form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent form from submitting
-
-  // Get entered password from form input
-  const password = document.getElementById('password').value;
-
-  // Make a GET request to read password from online text file
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://raw.githubusercontent.com/SintcoLTD/CDN/main/chrome-extension/sparxmaths/SMA/password.txt', true); // Replace with your URL
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        // Read password from response
-        const correctPassword = xhr.responseText.trim();
-        
-        // Check if entered password matches
-        if (password === correctPassword) {
-          // Send message to content script to continue script
-          chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {action: 'continueScript'});
-          });
-        } else {
-          alert('Incorrect password! Try again.');
-        }
-      } else {
-        alert('Error reading password file!');
-      }
-    }
-  };
-  xhr.send();
-});
-
-
-
-theme1 = document.querySelector('.theme-1');
-theme2 = document.querySelector('.theme-2');
-theme3 = document.querySelector('.theme-3');
 downloadButton = document.querySelector('#download');
 aboutButton = document.querySelector('#about');
 
@@ -54,12 +17,12 @@ document.addEventListener("click", function(e) {
 });
 
 aboutButton.addEventListener('click', function() {
-    const newURL = "https://github.com/sulaymaanajmal";
+    const newURL = "https://github.com/NajmAjmal";
         chrome.tabs.create({ url: newURL });
 });
 
 downloadButton.addEventListener('click', function() {
-    chrome.storage.sync.get(['sparxCodes'], function(database) {
+    chrome.storage.sync.get(['sparx-data'], function(database) {
         let newDatabase = [];
         for (let [key, value] of Object.entries(database.sparxCodes)) {
             value = value.join('').replace('\n', '');
